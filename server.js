@@ -18,7 +18,6 @@ app.get('/signup', (req, res) => {
 });
 
 app.post('/signupprocess', (req, res) => {
-    const id = 0;
     const username = req.body.username;
     const password = req.body.password;
     
@@ -26,7 +25,7 @@ app.post('/signupprocess', (req, res) => {
    const sql = `INSERT INTO users (username, password) VALUES (?, ?)`;
 
 
-    db_connection.query(sql, (err, result) => {
+    db_connection.query(sql,[username, password], (err, result) => {
         if (err) throw err;
         res.send(
             '<script>alert("User registered successfully!"); window.location.href = "/";</script>');
