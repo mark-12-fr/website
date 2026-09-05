@@ -13,9 +13,9 @@
   "license": "ISC",
   "author": "devs",
   "type": "commonjs",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon backend/server.js"
   },
   "dependencies": {
     "body-parser": "^2.3.0",
