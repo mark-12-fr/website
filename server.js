@@ -18,6 +18,10 @@ app.get('/signup', (req, res) => {
     res.render('index', {title: "Sign Up"});
 });
 
+app.get('/login', (req, res) => {
+    res.render('login', {title: "Log In"});
+});
+
 app.post('/signupprocess', async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
