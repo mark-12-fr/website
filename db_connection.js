@@ -1,12 +1,9 @@
-const mysql = require("mysql");
+require('dotenv').config();
+const supabaseJS = require('@supabase/supabase-js');
 
-const db_connection = mysql.createConnection({
-    host:"localhost",
-    user:"root",
-    password:"",
-    database:"website_db"
-});
+const supabase = supabaseJS.createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_KEY
+);
 
-module.exports = db_connection;
-
-
+module.exports = supabase;
