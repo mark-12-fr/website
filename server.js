@@ -13,10 +13,6 @@ app.get('/', (req, res) => {
     res.render('index', {title: "Sign Up"});
 });
 
-app.get('/signup', (req, res) => {
-    res.render('index', {title: "Sign Up"});
-});
-
 app.post('/signupprocess', (req, res) => {
     const id = 0;
     const username = req.body.username;
