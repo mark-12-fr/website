@@ -41,6 +41,18 @@ app.post('/signupprocess', async (req, res) => {
     }
 });
 
+app.get('/dashboard', async (req, res) => {
+    const { count, error } = await supabase
+        .from('users')
+        .select('*', { count: 'exact', head: true });
+
+    res.render('dashboard', {
+        title: 'Dashboard',
+        userCount: count || 0,
+        username: 'User'
+    });
+});
+
 app.post('/loginprocess', async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
@@ -56,7 +68,7 @@ app.post('/loginprocess', async (req, res) => {
     } else {
         const match = await bcrypt.compare(password, data.password);
         if (match) {
-            res.send('<script>alert("Login successful!"); window.location.href = "/";</script>');
+            res.redirect('/dashboard');
         } else {
             res.send('<script>alert("Wrong password!"); window.location.href = "/login";</script>');
         }
