@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const supabase = require('./db_connection');
+const bcrypt = require('bcrypt');
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -21,9 +22,13 @@ app.post('/signupprocess', async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
+    // Hash the password before storing
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
     const { data, error } = await supabase
         .from('users')
-        .insert([{ username, password }]);
+        .insert([{ username, password: hashedPassword }]);
 
     if (error) {
         res.send('<script>alert("Error!"); window.location.href = "/";</script>');
