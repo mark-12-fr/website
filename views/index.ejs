@@ -18,7 +18,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: conic-gradient(#ff0000, #ff7700, #ffff00, #00ff00, #0000ff, #8b00ff, #ff0000);
+            animation: rainbow 1s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
         }
 
         .card {
@@ -28,6 +39,8 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
             width: 100%;
             max-width: 400px;
+            animation: spin 0.5s linear infinite;
+            transform-style: preserve-3d;
         }
 
         h1 {
