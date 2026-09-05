@@ -41,6 +41,28 @@ app.post('/signupprocess', async (req, res) => {
     }
 });
 
+app.post('/loginprocess', async (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    const { data, error } = await supabase
+        .from('users')
+        .select('*')
+        .eq('username', username)
+        .single();
+
+    if (error || !data) {
+        res.send('<script>alert("User not found!"); window.location.href = "/login";</script>');
+    } else {
+        const match = await bcrypt.compare(password, data.password);
+        if (match) {
+            res.send('<script>alert("Login successful!"); window.location.href = "/";</script>');
+        } else {
+            res.send('<script>alert("Wrong password!"); window.location.href = "/login";</script>');
+        }
+    }
+});
+
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });
