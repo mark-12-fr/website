@@ -1,0 +1,27 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "practice",
+  "homepage": "https://github.com/mark-12-fr/website#readme",
+  "bugs": {
+    "url": "https://github.com/mark-12-fr/website/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mark-12-fr/website.git"
+  },
+  "license": "ISC",
+  "author": "devs",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^2.3.0",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "mysql2": "^3.24.3",
+    "nodemon": "^3.1.14"
+  }
+}
