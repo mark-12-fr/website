@@ -23,11 +23,8 @@ app.post('/signupprocess', (req, res) => {
     const password = req.body.password;
     
 
-    const sql = `INSERT INTO users VALUES (
-    "${id}",
-    "${username}",
-    "${password}"
-    )`;
+   const sql = `INSERT INTO users (username, password) VALUES (?, ?)`;
+
 
     db_connection.query(sql, (err, result) => {
         if (err) throw err;
