@@ -3,7 +3,7 @@ const app = express();
 const db_connection = require('./db_connection');
 
 app.set('view engine', 'ejs');
-app.use(express.static('frontend'));
+app.use(express.static('public'));
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
